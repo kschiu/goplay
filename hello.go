@@ -13,18 +13,33 @@ func main() {
   // first - result from fn
   // second - an error, if there is one
 
-  fmt.Println("Error fetching webpage:", err)
+  // NO TERNARY OP IN GO??? :(
+  if err != nil {
+    fmt.Println("Error fetching webpage:", err)
+  }
 
   body, err := ioutil.ReadAll(resp.Body)
   // resp.Body is a datastream that we need to convert
   // into something we can parse, using ioutil
 
-  fmt.Println("Error reading body:", err)
+  if err != nil {
+    fmt.Println("Error reading body:", err)
+  }
 
-  fmt.Println(csContains(string(body), "Stay Tuned For More Info"))
+  // TODO: Make this send me an email or text
+
   // Cast body into string, from a bytearray
   // Then check if page says "stay tuned still"
+  if csContains(string(body), "Stay Tuned For More Info") {
+    fmt.Println("Volunteering not open yet")
+  } else {
+    // Do something to notify me to sign up
+    fmt.Println("Go Sign Up For Volunteering")
+  }
 }
+
+// Helper method
+
 
 // Case Insensitive Contains
 func csContains(a, b string) bool {
