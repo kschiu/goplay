@@ -59,10 +59,10 @@ func getVolunteerStatus() string {
   // Cast body into string, from a bytearray
   // Then check if page says "stay tuned still"
   if csContains(string(body), "Stay Tuned For More Info") {
-    return "Volunteering not open yet"
+    return "Volunteering not open yet \n Please visit: https://www.sfoutsidelands.com/get-involved/volunteers/"
   } else {
     // Do something to notify me to sign up
-    return "Go Sign Up For Volunteering"
+    return "Go Sign Up For Volunteering! \n https://www.sfoutsidelands.com/get-involved/volunteers/"
   }
 }
 
